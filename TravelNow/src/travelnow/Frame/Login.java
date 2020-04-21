@@ -94,19 +94,23 @@ public class Login extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
 		// TODO add your handling code here:
 		try {
-			String name = tf_name.getText();
-			String pass = tf_pass.getText();
+			String username = tf_name.getText();
+			String password = tf_pass.getText();
 
-			model.setUsername(name);
-			model.setPassword(pass);
+			model.setUsername(username);
+			model.setPassword(password);
 			
-			Boolean result = controller.login(model);
-			if(result){
+			Boolean loginadmin = controller.loginadmin(model);
+			Boolean login = controller.login(model);
+			
+			if(loginadmin){
+				JOptionPane.showMessageDialog(null, "Selamat Datang Admin");
+			}
+			else if(login){
 				JOptionPane.showMessageDialog(null, "Berhasil Masuk");
 			}
-			else{
+			else
 				JOptionPane.showMessageDialog(null, "Gagal Masuk");
-			}
 		} catch (Exception e){
 			System.err.println(e.getMessage());
 		}

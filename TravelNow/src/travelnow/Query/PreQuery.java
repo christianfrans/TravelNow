@@ -11,5 +11,6 @@ package travelnow.Query;
  */
 public class PreQuery {
 	public String register = "";
-	public String login = "SELECT * FROM users WHERE name = ? AND password = ?";
+	public String login = "SELECT * FROM users WHERE username = ? AND password = ?";
+	public String loginadmin = "SELECT * FROM admin WHERE username = ? AND password = ?";
 }
