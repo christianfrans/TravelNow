@@ -15,6 +15,12 @@ public class MainModel {
 	public String username;
 	public String password;
 	
+	public String first;
+	public String last;
+	public String address;
+	public String email;
+	public String phone;
+	
 	public String passengers;
 	public String users_id;
 	public String estimation;
@@ -25,6 +31,46 @@ public class MainModel {
 	public String packets;
 	public String airlines;
 
+	public void setFirst(String first) {
+		this.first = first;
+	}
+
+	public String getFirst() {
+		return first;
+	}
+
+	public void setLast(String last) {
+		this.last = last;
+	}
+
+	public String getLast() {
+		return last;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+	
 	public void setPrice(String price) {
 		this.price = price;
 	}

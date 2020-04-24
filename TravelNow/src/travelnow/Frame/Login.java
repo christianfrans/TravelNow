@@ -19,6 +19,8 @@ public class Login extends javax.swing.JFrame {
 	MainModel model = new MainModel();
 	MultiUserController controller = new MultiUserController();
 	ResultSet rs;
+	public String username;
+	public String password;
 
 	/**
 	 * Creates new form Login
@@ -105,9 +107,17 @@ public class Login extends javax.swing.JFrame {
 			
 			if(loginadmin){
 				JOptionPane.showMessageDialog(null, "Selamat Datang Admin");
+				Admin admin = new Admin(username, password);
+				this.setVisible(false);
+				admin.setVisible(true);
+				dispose();
 			}
 			else if(login){
 				JOptionPane.showMessageDialog(null, "Berhasil Masuk");
+				User user = new User(username, password);
+				this.setVisible(false);
+				user.setVisible(true);
+				dispose();
 			}
 			else
 				JOptionPane.showMessageDialog(null, "Gagal Masuk");

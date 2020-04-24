@@ -48,6 +48,16 @@ public class UserController extends BaseController{
 		return this.preparedStatement(map, sql);
 	}
 	
+	public ResultSet getUser (String username, String password){ //ID USER sesuai Username dan Password
+     String sql = this.query.users;
+     
+     Map<Integer, Object>map = new HashMap<>();
+     map.put(1, username);
+	 map.put(2, password);
+     
+     return this.getWithParameter(map, sql);
+	}
+	
 	
 //	public Boolean hargahotel(MainModel model) throws SQLException {
 //

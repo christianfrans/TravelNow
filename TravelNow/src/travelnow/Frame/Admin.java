@@ -14,8 +14,12 @@ public class Admin extends javax.swing.JFrame {
 	/**
 	 * Creates new form Admin
 	 */
-	public Admin() {
+	public Admin(String username, String password) {
 		initComponents();
+	}
+
+	private Admin() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
 	/**

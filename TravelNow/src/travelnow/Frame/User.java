@@ -5,17 +5,38 @@
  */
 package travelnow.Frame;
 
+import java.sql.ResultSet;
+import travelnow.Controller.UserController;
+import javax.sql.*;
+
 /**
  *
  * @author user
  */
 public class User extends javax.swing.JFrame {
-
+	ResultSet rs;
+	UserController controller = new UserController();
+	
 	/**
 	 * Creates new form User
 	 */
-	public User() {
+	
+	public User(String username, String password) {
 		initComponents();
+		usersID(username, password);
+	}
+
+	private User() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	
+	public void usersID(String username, String password){
+		try{
+			this.rs = controller.getUser(username, password);
+			tf_usersid.setText(this.rs.toString());
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+		}
 	}
 
 	/**
@@ -27,12 +48,16 @@ public class User extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        tf_usersid = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Selamat datang di TravelNow");
 
         jLabel2.setText("Silahkan membuat pesanan");
+
+        jLabel3.setText("Pemesan :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,6 +69,12 @@ public class User extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addGap(117, 117, 117))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(tf_usersid, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -52,7 +83,11 @@ public class User extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tf_usersid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,5 +131,7 @@ public class User extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField tf_usersid;
     // End of variables declaration//GEN-END:variables
 }

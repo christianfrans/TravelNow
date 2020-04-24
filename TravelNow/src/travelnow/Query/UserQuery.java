@@ -14,7 +14,7 @@ public class UserQuery {
 			+ ", airlines_id, estimation, amount"
 			+ ", transactiondate) VALUES (?,?,?,?,?,?,?)";
 	
-	public String users = "SELECT id from users WHERE email = ?";
+	public String users = "SELECT id from users WHERE username = ? AND password = ?";
 	public String pilihpaket = "SELECT price from packets WHERE name = ?";
 	public String pilihhotel = "SELECT price from hotels WHERE name = ?";
 	public String pilihmaskapai = "SELECT price from airlines WHERE name = ?";

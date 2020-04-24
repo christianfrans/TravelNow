@@ -22,7 +22,18 @@ public class MultiUserController extends BaseController{
 	Helper helper = new Helper();
 	
 	public Boolean register(MainModel model) throws SQLException{
-		return true; //EDIT NANTI
+		Map<Integer, Object> map = new HashMap<>();
+		map.put(1, model.getFirst());
+		map.put(2, model.getLast());
+		map.put(3, model.getAddress());
+		map.put(4, model.getEmail());
+		map.put(5, model.getPhone());
+		map.put(6, model.getUsername());
+		map.put(7, model.getPassword());
+		
+		String sql = this.query.register;
+		
+		return this.preparedStatement(map, sql);
 	}
 	
 	public Boolean login(MainModel model) throws SQLException {
