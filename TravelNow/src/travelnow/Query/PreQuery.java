@@ -12,8 +12,7 @@ package travelnow.Query;
 public class PreQuery {
 	public String register = "INSERT INTO users (first_name, last_name, address"
 			+ ", email, phone, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
-	public String login = "SELECT * FROM users WHERE username = ? AND password"
-			+ " = ? AND status = 'U' ";
-	public String loginadmin = "SELECT * FROM users WHERE username = ? "
-			+ "AND password = ? AND status = 'A' ";
+	public String login = "SELECT * FROM users WHERE username = ? AND password = ?";
+	
+	public String showsStatus = "SELECT * FROM users WHERE username = ? AND password = ?";
 }

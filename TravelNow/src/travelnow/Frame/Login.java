@@ -102,17 +102,16 @@ public class Login extends javax.swing.JFrame {
 			model.setUsername(username);
 			model.setPassword(password);
 			
-			Boolean loginadmin = controller.loginadmin(model);
-			Boolean login = controller.login(model);
+			String result = controller.statusUser(model, password);
 			
-			if(loginadmin){
+			if(result.equals("A")){
 				JOptionPane.showMessageDialog(null, "Selamat Datang Admin");
 				Admin admin = new Admin(username, password);
 				this.setVisible(false);
 				admin.setVisible(true);
 				dispose();
 			}
-			else if(login){
+			else if(result.equals("U")){
 				JOptionPane.showMessageDialog(null, "Berhasil Masuk");
 				User user = new User(username, password);
 				this.setVisible(false);
