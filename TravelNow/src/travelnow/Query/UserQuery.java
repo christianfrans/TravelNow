@@ -11,11 +11,11 @@ package travelnow.Query;
  */
 public class UserQuery {
 	public String insert = "INSERT INTO bookings (users_id, hotels_id, packets_id"
-			+ ", airlines_id, estimation, amount"
+			+ ", airlines_id, estimation, price"
 			+ ", transactiondate) VALUES (?,?,?,?,?,?,?)";
 	
-	public String users = "SELECT id from users WHERE username = ? AND password = ?";
-	public String pilihpaket = "SELECT price from packets WHERE name = ?";
-	public String pilihhotel = "SELECT price from hotels WHERE name = ?";
-	public String pilihmaskapai = "SELECT price from airlines WHERE name = ?";
+	public String usersID = "SELECT * FROM users WHERE username = ? AND password = ?";
+	public String hotelsID = "SELECT * FROM hotels WHERE name = ?";
+	public String airlinesID = "SELECT * FROM airlines WHERE name = ?";
+	public String packetsID = "SELECT * FROM packets WHERE name = ?";
 }

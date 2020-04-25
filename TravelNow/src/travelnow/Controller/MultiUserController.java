@@ -36,26 +36,8 @@ public class MultiUserController extends BaseController{
 		return this.preparedStatement(map, sql);
 	}
 	
-//	public Boolean login(MainModel model) throws SQLException {
-//		String status = "A";
-//		
-//		Map<Integer, Object> map = new HashMap<>();
-//		map.put(1, model.getUsername());
-//		map.put(2, model.getPassword());
-//		
-//		String sql = this.query.login;
-//		
-//		ResultSet rs = this.getWithParameter(map, sql);
-//		
-//		if(rs.getString("status").equals("U")){
-//			status = "U";
-//			return false;
-//		}
-//		return true;
-//	}
-	
-	public String statusUser (MainModel model, String status) throws SQLException{ //pencarian bedasarkan ID
-     String sql = this.query.showsStatus;
+	public String login (MainModel model, String status) throws SQLException{ //pencarian bedasarkan ID
+     String sql = this.query.login;
      
      Map<Integer, Object>map = new HashMap<>();
      map.put(1, model.getUsername());

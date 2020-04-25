@@ -102,24 +102,27 @@ public class Login extends javax.swing.JFrame {
 			model.setUsername(username);
 			model.setPassword(password);
 			
-			String result = controller.statusUser(model, password);
+			String result = controller.login(model, password);
 			
-			if(result.equals("A")){
-				JOptionPane.showMessageDialog(null, "Selamat Datang Admin");
-				Admin admin = new Admin(username, password);
-				this.setVisible(false);
-				admin.setVisible(true);
-				dispose();
+			switch (result) {
+				case "A":
+					JOptionPane.showMessageDialog(null, "Selamat Datang Admin");
+					Admin admin = new Admin(username, password);
+					this.setVisible(false);
+					admin.setVisible(true);
+					dispose();
+					break;
+				case "U":
+					JOptionPane.showMessageDialog(null, "Berhasil Masuk");
+					User user = new User(username, password);
+					this.setVisible(false);
+					user.setVisible(true);
+					dispose();
+					break;
+				default:
+					JOptionPane.showMessageDialog(null, "Gagal Masuk");
+					break;
 			}
-			else if(result.equals("U")){
-				JOptionPane.showMessageDialog(null, "Berhasil Masuk");
-				User user = new User(username, password);
-				this.setVisible(false);
-				user.setVisible(true);
-				dispose();
-			}
-			else
-				JOptionPane.showMessageDialog(null, "Gagal Masuk");
 		} catch (Exception e){
 			System.err.println(e.getMessage());
 		}
