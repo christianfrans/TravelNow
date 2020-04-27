@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import travelnow.Helper.Helper;
+import travelnow.Logic.Calculation;
 import travelnow.Model.MainModel;
 import travelnow.Query.UserQuery;
 
@@ -136,9 +137,10 @@ public class UserController extends BaseController{
 		int packets = Integer.parseInt(packetsPrice);
 		int estimation = Integer.parseInt(model.getEstimation());
 		
-		int total = (hotels * estimation) + (airlines * estimation) + (packets * estimation);
+		Calculation calculation = new Calculation();
+		int totalPrice = calculation.calculate(estimation, hotels, packets, airlines);
 		
-		return total;
+		return totalPrice;
 	}
 	
 	public Boolean input(MainModel model, String usersID, String hotelsID, String airlinesID, String packetsID, int totalPrice) throws ParseException, SQLException{
