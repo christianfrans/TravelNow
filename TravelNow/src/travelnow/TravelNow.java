@@ -5,7 +5,7 @@
  */
 package travelnow;
 
-import travelnow.Frame.Login;
+import travelnow.Frame.SplashScreen;
 
 /**
  *
@@ -18,8 +18,8 @@ public class TravelNow {
 	 */
 	public static void main(String[] args) {
 		// TODO code application logic here
-		Login login = new Login();
-		login.setVisible(true);
+		SplashScreen loading = new SplashScreen();
+		loading.setVisible(true);
 	}
 	
 }

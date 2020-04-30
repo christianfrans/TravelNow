@@ -13,5 +13,6 @@ public class PreQuery {
 	public String register = "INSERT INTO users (first_name, last_name, address"
 			+ ", email, phone, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	
-	public String login = "SELECT * FROM users WHERE username = ? AND password = ?";
+	public String login = "SELECT * FROM users WHERE username = ? AND password = ? "
+			+ "AND deleted_at IS NULL";
 }

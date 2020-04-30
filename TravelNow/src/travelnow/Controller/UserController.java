@@ -159,4 +159,23 @@ public class UserController extends BaseController{
 		
 		return this.preparedStatement(map, sql);
 	}
+	
+	public ResultSet Bookings(String usersID) { //mengambil data
+		Map<Integer, Object> map = new HashMap<>();
+		
+		map.put(1, usersID);
+		String sql = this.query.get;
+		return this.getWithParameter(map, sql);
+	}
+	
+	public Boolean delete(String id) throws ParseException {  //untuk delete
+		String deleted_at = "now()";
+
+		Map<Integer, Object> map = new HashMap<>();
+		map.put(1, deleted_at);
+		map.put(2, id);
+		String sql = this.query.delete;
+
+		return this.preparedStatement(map, sql);
+	}
 }

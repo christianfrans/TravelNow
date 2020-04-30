@@ -14,6 +14,6 @@ import travelnow.Model.MainModel;
 public class Calculation extends MainModel{
 	@Override
 	public int calculate(int a, int b, int c, int d){
-		return (a * b) + (a * c) + (a * d);
+		return (a * b) + (2 * c) + (a * d);
 	}
 }

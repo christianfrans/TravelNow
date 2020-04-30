@@ -18,4 +18,7 @@ public class UserQuery {
 	public String hotelsID = "SELECT * FROM hotels WHERE name = ?";
 	public String airlinesID = "SELECT * FROM airlines WHERE name = ?";
 	public String packetsID = "SELECT * FROM packets WHERE name = ?";
+	
+	public String get = "SELECT * FROM bookings WHERE users_id = ?";
+	public String delete = "UPDATE bookings SET deleted_at = ? WHERE users_id = ?";
 }

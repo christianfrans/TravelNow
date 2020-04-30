@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import travelnow.Controller.UserController;
-import javax.sql.*;
 import javax.swing.JOptionPane;
 import travelnow.Model.MainModel;
 
@@ -33,10 +32,9 @@ public class User extends javax.swing.JFrame {
 	
 	public User(String username, String password) throws SQLException {
 		initComponents();
-		usersID = controller.usersID(username, password, password);
-		String total = Integer.toString(totalPrice);
+		setLocationRelativeTo(this);
+		usersID = controller.usersID(username, password, usersID);
 		tf_usersid.setText(usersID);
-		tf_price.setText(total);
 		tf_usersid.setEnabled(false);
 		tf_price.setEnabled(false);
 	}
@@ -71,8 +69,10 @@ public class User extends javax.swing.JFrame {
         btn_submit = new javax.swing.JButton();
         dp_transaction = new org.jdesktop.swingx.JXDatePicker();
         btn_calculate = new javax.swing.JButton();
+        btn_bookings = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Selamat datang di TravelNow");
 
@@ -90,11 +90,6 @@ public class User extends javax.swing.JFrame {
         jLabel4.setText("Pilihan Hotel :");
 
         cb_hotel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Intercontinental Hotel", "Four Seasons Hotel", "RedDoorz Hotel" }));
-        cb_hotel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                cb_hotelKeyTyped(evt);
-            }
-        });
 
         jLabel5.setText("Pilihan Paket :");
 
@@ -108,7 +103,7 @@ public class User extends javax.swing.JFrame {
 
         jLabel8.setText("Total :");
 
-        jLabel9.setText("Departure Date :");
+        jLabel9.setText("Tanggal Keberangkatan :");
 
         btn_submit.setText("Submit");
         btn_submit.addActionListener(new java.awt.event.ActionListener() {
@@ -124,16 +119,17 @@ public class User extends javax.swing.JFrame {
             }
         });
 
+        btn_bookings.setText("Check your Bookings");
+        btn_bookings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bookingsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(117, 117, 117))
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -146,34 +142,39 @@ public class User extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dp_transaction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_usersid)
+                            .addComponent(cb_hotel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_packet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_airlines, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_estimation)
+                            .addComponent(tf_price)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tf_usersid)
-                                    .addComponent(cb_hotel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cb_packet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cb_airlines, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tf_estimation)
-                                    .addComponent(tf_price, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_calculate))
-                            .addComponent(dp_transaction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 6, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_submit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_logout)
-                        .addGap(23, 23, 23))))
+                                .addComponent(btn_submit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_bookings)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_calculate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(157, 157, 157))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(37, 37, 37)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tf_usersid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -202,15 +203,13 @@ public class User extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(dp_transaction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(btn_logout)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_submit)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addComponent(btn_submit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_logout)
+                    .addComponent(btn_bookings))
+                .addContainerGap())
         );
 
         pack();
@@ -226,6 +225,7 @@ public class User extends javax.swing.JFrame {
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
         // TODO add your handling code here:
+		//INPUT DATA KE BOOKINGS
 		try{
 		String hotels = cb_hotel.getSelectedItem().toString();
 		String airlines = cb_airlines.getSelectedItem().toString();
@@ -263,15 +263,14 @@ public class User extends javax.swing.JFrame {
 		}
     }//GEN-LAST:event_btn_submitActionPerformed
 
-    private void cb_hotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cb_hotelKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_hotelKeyTyped
-
     private void btn_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calculateActionPerformed
         // TODO add your handling code here:
-			JOptionPane.showMessageDialog(null, "Jangan lupa untuk mengisi esti"
+		
+		//PEMBERITAHUAN
+		JOptionPane.showMessageDialog(null, "Jangan lupa untuk mengisi esti"
 					+ "masi hari perjalanan anda untuk melakukan kalkulasi", "Alert", HEIGHT);
 		
+		//HANYA UNTUK MENUNJUKKAN HASIL KALKULASI, BELUM INPUT KE DATABASE
 		try{
 		String hotels = cb_hotel.getSelectedItem().toString();
 		String airlines = cb_airlines.getSelectedItem().toString();
@@ -297,6 +296,14 @@ public class User extends javax.swing.JFrame {
 			System.out.println(ex.getMessage());
 		}
     }//GEN-LAST:event_btn_calculateActionPerformed
+
+    private void btn_bookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bookingsActionPerformed
+        // TODO add your handling code here:
+		Bookings bookings = new Bookings(usersID);
+		this.setVisible(false);
+		bookings.setVisible(true);
+		dispose();
+    }//GEN-LAST:event_btn_bookingsActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -334,6 +341,7 @@ public class User extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_bookings;
     private javax.swing.JButton btn_calculate;
     private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_submit;
