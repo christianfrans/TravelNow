@@ -6,6 +6,11 @@
 package travelnow.Frame;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import static java.time.LocalDateTime.now;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import travelnow.Controller.UserController;
@@ -21,8 +26,11 @@ public class Bookings extends javax.swing.JFrame {
 	MainModel model = new MainModel();
 	UserController controller = new UserController();
     String usersID;
+	String bookingsID;
     Helper helper = new Helper();
     ResultSet rs;
+	public String username;
+	public String password;
 	
 	public void getAllData(){
         this.rs = controller.Bookings(this.usersID);
@@ -37,13 +45,17 @@ public class Bookings extends javax.swing.JFrame {
 	 * Creates new form Bookings
 	 * @param usersID
 	 */
-	public Bookings(String usersID) {
+	public Bookings(String usersID) throws SQLException {
 		initComponents();
+		setLocationRelativeTo(this);
 		this.usersID = usersID;
 		getAllData();
+		btn_cancel.setEnabled(false);
+		username = controller.username(username, usersID);
+		password = controller.password(password, usersID);
 	}
 
-	Bookings() {
+	private Bookings() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
@@ -58,8 +70,10 @@ public class Bookings extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_bookings = new javax.swing.JTable();
         btn_cancel = new javax.swing.JButton();
+        btn_back = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Your Bookings");
 
@@ -88,6 +102,14 @@ public class Bookings extends javax.swing.JFrame {
             }
         });
 
+        btn_back.setText("Back");
+        btn_back.setToolTipText("");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,7 +126,9 @@ public class Bookings extends javax.swing.JFrame {
                         .addGap(91, 91, 91))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btn_cancel)
-                        .addGap(252, 252, 252))))
+                        .addGap(183, 183, 183)
+                        .addComponent(btn_back)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +138,9 @@ public class Bookings extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_cancel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_cancel)
+                    .addComponent(btn_back))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -123,10 +149,12 @@ public class Bookings extends javax.swing.JFrame {
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         // TODO add your handling code here:
+		LocalDateTime deleted_at = now();
 		try {        
-        boolean result = controller.delete(usersID);
+        boolean result = controller.delete(deleted_at, bookingsID);
         if(result){
             JOptionPane.showMessageDialog(null, "Berhasil Menghapus Data");
+			getAllData();
         }
         else{
             JOptionPane.showMessageDialog(null, "Gagal Menghapus Data");
@@ -138,17 +166,29 @@ public class Bookings extends javax.swing.JFrame {
 
     private void tb_bookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_bookingsMouseClicked
         // TODO add your handling code here:
-//		try {
-//			String id = helper.getValueRows(tb_bookings,0);
-//			 
-//            btn_cancel.setEnabled(true);
-//            
-//            this.usersID = id;
-//            
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
+		try {
+			String id = helper.getValueRows(tb_bookings,0);
+			 
+            btn_cancel.setEnabled(true);
+            
+            this.bookingsID = id;
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_tb_bookingsMouseClicked
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+		try {
+			// TODO add your handling code here:
+			User user = new User(username, password);
+			this.setVisible(false);
+			user.setVisible(true);
+			dispose();
+		} catch (SQLException ex) {
+			Logger.getLogger(Bookings.class.getName()).log(Level.SEVERE, null, ex);
+		}
+    }//GEN-LAST:event_btn_backActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -186,6 +226,7 @@ public class Bookings extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btn_back;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -19,6 +19,9 @@ public class UserQuery {
 	public String airlinesID = "SELECT * FROM airlines WHERE name = ?";
 	public String packetsID = "SELECT * FROM packets WHERE name = ?";
 	
-	public String get = "SELECT * FROM bookings WHERE users_id = ?";
-	public String delete = "UPDATE bookings SET deleted_at = ? WHERE users_id = ?";
+	public String get = "SELECT * FROM bookings WHERE users_id = ? AND deleted_at IS NULL";
+	public String delete = "UPDATE bookings SET deleted_at = ? WHERE id = ?";
+	
+	public String username = "SELECT * FROM users WHERE id = ?";
+	public String password = "SELECT * FROM users WHERE id = ?";
 }

@@ -8,6 +8,7 @@ package travelnow.Controller;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import travelnow.Helper.Helper;
@@ -168,14 +169,43 @@ public class UserController extends BaseController{
 		return this.getWithParameter(map, sql);
 	}
 	
-	public Boolean delete(String id) throws ParseException {  //untuk delete
-		String deleted_at = "now()";
-
+	public Boolean delete(LocalDateTime deleted_at, String usersID) throws ParseException {  //untuk delete
+		
 		Map<Integer, Object> map = new HashMap<>();
 		map.put(1, deleted_at);
-		map.put(2, id);
+		map.put(2, usersID);
 		String sql = this.query.delete;
 
 		return this.preparedStatement(map, sql);
+	}
+	
+	public String username (String username, String usersID) throws SQLException{ //pencarian bedasarkan ID
+     String sql = this.query.username;
+     
+     Map<Integer, Object>map = new HashMap<>();
+     map.put(1, usersID);
+	 
+	 ResultSet rs = this.getWithParameter(map, sql);
+	 
+	 if (rs.next()) {
+			username = rs.getString("username");
+		}
+
+		return username;
+	}
+	
+	public String password (String password, String usersID) throws SQLException{ //pencarian bedasarkan ID
+     String sql = this.query.username;
+     
+     Map<Integer, Object>map = new HashMap<>();
+     map.put(1, usersID);
+	 
+	 ResultSet rs = this.getWithParameter(map, sql);
+	 
+	 if (rs.next()) {
+			password = rs.getString("password");
+		}
+
+		return password;
 	}
 }

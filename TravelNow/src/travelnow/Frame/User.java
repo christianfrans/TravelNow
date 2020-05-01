@@ -8,6 +8,8 @@ package travelnow.Frame;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import travelnow.Controller.UserController;
 import javax.swing.JOptionPane;
 import travelnow.Model.MainModel;
@@ -298,11 +300,15 @@ public class User extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_calculateActionPerformed
 
     private void btn_bookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bookingsActionPerformed
-        // TODO add your handling code here:
-		Bookings bookings = new Bookings(usersID);
-		this.setVisible(false);
-		bookings.setVisible(true);
-		dispose();
+		try {
+			// TODO add your handling code here:
+			Bookings bookings = new Bookings(usersID);
+			this.setVisible(false);
+			bookings.setVisible(true);
+			dispose();
+		} catch (SQLException ex) {
+			Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+		}
     }//GEN-LAST:event_btn_bookingsActionPerformed
 
 	/**
