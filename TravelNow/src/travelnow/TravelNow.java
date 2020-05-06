@@ -21,5 +21,4 @@ public class TravelNow {
 		SplashScreen loading = new SplashScreen();
 		loading.setVisible(true);
 	}
-	
 }

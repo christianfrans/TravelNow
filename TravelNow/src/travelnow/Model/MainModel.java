@@ -159,7 +159,7 @@ public class MainModel {
 		return password;
 	}
 	
-	public int calculate(int a, int b, int c, int d){
-		return (a * b) + (a * c) + (a * d);
+	public int calculate(int a, int b, int c, int d, int e){
+		return ((a * b) + (2 * c) + (a * d)) * e;
 	}
 }

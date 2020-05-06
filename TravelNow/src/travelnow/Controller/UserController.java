@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JComboBox;
 import travelnow.Helper.Helper;
 import travelnow.Logic.Calculation;
 import travelnow.Model.MainModel;
@@ -41,7 +42,7 @@ public class UserController extends BaseController{
 	}
 	
 	public String hotelsID (MainModel model, String hotelsID) throws SQLException{ //pencarian bedasarkan ID
-     String sql = this.query.hotelsID;
+     String sql = this.query.hotels;
      
      Map<Integer, Object>map = new HashMap<>();
      map.put(1, model.getHotels());
@@ -57,7 +58,7 @@ public class UserController extends BaseController{
 	
 	
 	public String airlinesID (MainModel model, String airlinesID) throws SQLException{ //pencarian bedasarkan ID
-     String sql = this.query.airlinesID;
+     String sql = this.query.airlines;
      
      Map<Integer, Object>map = new HashMap<>();
      map.put(1, model.getAirlines());
@@ -72,7 +73,7 @@ public class UserController extends BaseController{
 	}
 	
 	public String packetsID (MainModel model, String packetsID) throws SQLException{ //pencarian bedasarkan ID
-     String sql = this.query.packetsID;
+     String sql = this.query.packets;
      
      Map<Integer, Object>map = new HashMap<>();
      map.put(1, model.getPackets());
@@ -87,7 +88,7 @@ public class UserController extends BaseController{
 	}
 	
 	public String hotelsPrice (MainModel model, String hotelsPrice) throws SQLException{ //pencarian bedasarkan ID
-     String sql = this.query.hotelsID;
+     String sql = this.query.hotels;
      
      Map<Integer, Object>map = new HashMap<>();
      map.put(1, model.getHotels());
@@ -103,7 +104,7 @@ public class UserController extends BaseController{
 	
 	
 	public String airlinesPrice (MainModel model, String airlinesPrice) throws SQLException{ //pencarian bedasarkan ID
-     String sql = this.query.airlinesID;
+     String sql = this.query.airlines;
      
      Map<Integer, Object>map = new HashMap<>();
      map.put(1, model.getAirlines());
@@ -118,7 +119,7 @@ public class UserController extends BaseController{
 	}
 	
 	public String packetsPrice (MainModel model, String packetsPrice) throws SQLException{ //pencarian bedasarkan ID
-     String sql = this.query.packetsID;
+     String sql = this.query.packets;
      
      Map<Integer, Object>map = new HashMap<>();
      map.put(1, model.getPackets());
@@ -137,9 +138,10 @@ public class UserController extends BaseController{
 		int airlines = Integer.parseInt(airlinesPrice);
 		int packets = Integer.parseInt(packetsPrice);
 		int estimation = Integer.parseInt(model.getEstimation());
+		int passengers = Integer.parseInt(model.getPassengers());
 		
 		Calculation calculation = new Calculation();
-		int totalPrice = calculation.calculate(estimation, hotels, packets, airlines);
+		int totalPrice = calculation.calculate(estimation, hotels, packets, airlines, passengers);
 		
 		return totalPrice;
 	}
@@ -153,8 +155,9 @@ public class UserController extends BaseController{
 		map.put(3, packetsID);
 		map.put(4, airlinesID);
 		map.put(5, model.getEstimation());
-		map.put(6, totalPrice);
-		map.put(7, date);
+		map.put(6, model.getPassengers());
+		map.put(7, totalPrice);
+		map.put(8, date);
 		
 		String sql = this.query.insert;
 		
@@ -179,7 +182,8 @@ public class UserController extends BaseController{
 		return this.preparedStatement(map, sql);
 	}
 	
-	public String username (String username, String usersID) throws SQLException{ //pencarian bedasarkan ID
+	//untuk melempar balik dari bookings ke user
+	public String username (String username, String usersID) throws SQLException{
      String sql = this.query.username;
      
      Map<Integer, Object>map = new HashMap<>();
@@ -194,7 +198,8 @@ public class UserController extends BaseController{
 		return username;
 	}
 	
-	public String password (String password, String usersID) throws SQLException{ //pencarian bedasarkan ID
+	//untuk melempar balik dari bookings ke user
+	public String password (String password, String usersID) throws SQLException{
      String sql = this.query.username;
      
      Map<Integer, Object>map = new HashMap<>();
@@ -207,5 +212,38 @@ public class UserController extends BaseController{
 		}
 
 		return password;
+	}
+	
+	public String getHotels(String combo, JComboBox combobox) throws SQLException { //mengambil data
+		String sql = this.query.cb_hotels;
+		ResultSet rs = this.get(sql);
+
+		while (rs.next()) {
+			combo = rs.getString("name");
+			combobox.addItem(combo);
+		}
+		return combo;
+	}
+	
+	public String getAirlines(String combo, JComboBox combobox) throws SQLException { //mengambil data
+		String sql = this.query.cb_airlines;
+		ResultSet rs = this.get(sql);
+
+		while (rs.next()) {
+			combo = rs.getString("name");
+			combobox.addItem(combo);
+		}
+		return combo;
+	}
+	
+	public String getPackets(String combo, JComboBox combobox) throws SQLException { //mengambil data
+		String sql = this.query.cb_packets;
+		ResultSet rs = this.get(sql);
+
+		while (rs.next()) {
+			combo = rs.getString("name");
+			combobox.addItem(combo);
+		}
+		return combo;
 	}
 }

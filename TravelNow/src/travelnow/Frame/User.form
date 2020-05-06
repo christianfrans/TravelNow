@@ -24,9 +24,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -39,14 +48,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="dp_transaction" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="tf_usersid" max="32767" attributes="0"/>
-                          <Component id="cb_hotel" max="32767" attributes="0"/>
-                          <Component id="cb_packet" max="32767" attributes="0"/>
-                          <Component id="cb_airlines" max="32767" attributes="0"/>
-                          <Component id="tf_estimation" max="32767" attributes="0"/>
-                          <Component id="tf_price" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="tf_passengers" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tf_usersid" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cb_hotel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cb_packet" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cb_airlines" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tf_estimation" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tf_price" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="btn_submit" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btn_bookings" min="-2" max="-2" attributes="0"/>
@@ -60,14 +70,6 @@
                   </Group>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,6 +105,11 @@
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tf_estimation" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tf_passengers" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -116,7 +123,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btn_submit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_logout" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_bookings" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -160,11 +167,7 @@
     <Component class="javax.swing.JComboBox" name="cb_hotel">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Intercontinental Hotel"/>
-            <StringItem index="1" value="Four Seasons Hotel"/>
-            <StringItem index="2" value="RedDoorz Hotel"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -179,11 +182,7 @@
     <Component class="javax.swing.JComboBox" name="cb_packet">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Tera"/>
-            <StringItem index="1" value="Giga"/>
-            <StringItem index="2" value="Mega"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -198,11 +197,7 @@
     <Component class="javax.swing.JComboBox" name="cb_airlines">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Kingdom"/>
-            <StringItem index="1" value="Phylum"/>
-            <StringItem index="2" value="Class"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -253,6 +248,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bookingsActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Total penumpang :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tf_passengers">
     </Component>
   </SubComponents>
 </Form>

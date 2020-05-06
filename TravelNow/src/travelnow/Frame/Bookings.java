@@ -44,6 +44,7 @@ public class Bookings extends javax.swing.JFrame {
 	/**
 	 * Creates new form Bookings
 	 * @param usersID
+	 * @throws java.sql.SQLException
 	 */
 	public Bookings(String usersID) throws SQLException {
 		initComponents();

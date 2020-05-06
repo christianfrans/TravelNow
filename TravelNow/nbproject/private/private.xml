@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/TravelNow/src/travelnow/Frame/Bookings.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/TravelNow/src/travelnow/Frame/User.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/TravelNow/src/travelnow/Query/PreQuery.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/TravelNow/src/travelnow/Query/UserQuery.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/TravelNow/src/travelnow/Controller/BaseController.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/TravelNow/src/travelnow/Controller/UserController.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/TravelNow/src/travelnow/TravelNow.java</file>
         </group>

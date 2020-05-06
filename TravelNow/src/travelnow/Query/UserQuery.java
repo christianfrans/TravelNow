@@ -11,16 +11,20 @@ package travelnow.Query;
  */
 public class UserQuery {
 	public String insert = "INSERT INTO bookings (users_id, hotels_id, packets_id"
-			+ ", airlines_id, estimation, price"
-			+ ", departuredate) VALUES (?,?,?,?,?,?,?)";
+			+ ", airlines_id, estimation, passengers, price"
+			+ ", departuredate) VALUES (?,?,?,?,?,?,?,?)";
 	
 	public String usersID = "SELECT * FROM users WHERE username = ? AND password = ?";
-	public String hotelsID = "SELECT * FROM hotels WHERE name = ?";
-	public String airlinesID = "SELECT * FROM airlines WHERE name = ?";
-	public String packetsID = "SELECT * FROM packets WHERE name = ?";
+	public String hotels = "SELECT * FROM hotels WHERE name = ?";
+	public String airlines = "SELECT * FROM airlines WHERE name = ?";
+	public String packets = "SELECT * FROM packets WHERE name = ?";
 	
 	public String get = "SELECT * FROM bookings WHERE users_id = ? AND deleted_at IS NULL";
 	public String delete = "UPDATE bookings SET deleted_at = ? WHERE id = ?";
+	
+	public String cb_hotels = "SELECT * FROM hotels";
+	public String cb_airlines = "SELECT * FROM airlines";
+	public String cb_packets = "SELECT * FROM packets";
 	
 	public String username = "SELECT * FROM users WHERE id = ?";
 	public String password = "SELECT * FROM users WHERE id = ?";
