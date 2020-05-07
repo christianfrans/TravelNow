@@ -23,6 +23,7 @@ public class MainModel {
 	
 	public String passengers;
 	public String users_id;
+	public String bookingsID;
 	public String estimation;
 	public String price;
 	public Date transactiondate;
@@ -31,6 +32,14 @@ public class MainModel {
 	public String packets;
 	public String airlines;
 
+	public void setBookingsID(String bookingsID) {
+		this.bookingsID = bookingsID;
+	}
+
+	public String getBookingsID() {
+		return bookingsID;
+	}
+	
 	public void setFirst(String first) {
 		this.first = first;
 	}

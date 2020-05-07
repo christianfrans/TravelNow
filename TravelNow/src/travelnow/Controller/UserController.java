@@ -246,4 +246,58 @@ public class UserController extends BaseController{
 		}
 		return combo;
 	}
+	
+	public String bookingsID(MainModel model, int totalPrice, String bookingsID) throws SQLException, ParseException { //pencarian bedasarkan ID
+		String date = helper.parseDateToString(model.getTransactiondate());
+		String sql = this.query.bookings;
+
+		Map<Integer, Object> map = new HashMap<>();
+		map.put(1, totalPrice);
+		map.put(2, date);
+
+		ResultSet rs = this.getWithParameter(map, sql);
+
+		if (rs.next()) {
+			bookingsID = rs.getString("id");
+		}
+
+		return bookingsID;
+	}
+	
+	public ResultSet passenger(String usersID) { //mengambil data
+		Map<Integer, Object> map = new HashMap<>();
+		
+		map.put(1, usersID);
+		String sql = this.query.passenger;
+		return this.getWithParameter(map, sql);
+	}
+	
+	public Boolean inputPassengers(MainModel model) throws SQLException{
+		
+		Map<Integer, Object> map = new HashMap<>();
+		map.put(1, model.getBookingsID());
+		map.put(2, model.getFirst());
+		map.put(3, model.getLast());
+		map.put(4, model.getEmail());
+		map.put(5, model.getPhone());
+		
+		String sql = this.query.inputPassengers;
+		
+		return this.preparedStatement(map, sql);
+	}
+	
+	public String countPassengers(MainModel model, String countPassengers) throws SQLException {
+
+		Map<Integer, Object> map = new HashMap<>();
+		map.put(1, model.getBookingsID());
+
+		String sql = this.query.count;
+		ResultSet rs = this.getWithParameter(map, sql);
+		
+		if (rs.next()) {
+			countPassengers = rs.getString("bookings_id");
+		}
+		
+		return countPassengers;
+	}
 }

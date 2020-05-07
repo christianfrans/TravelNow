@@ -23,6 +23,7 @@ public class User extends javax.swing.JFrame {
 	MainModel model = new MainModel();
 	UserController controller = new UserController();
 	public String usersID;
+	public String bookingsID;
 	public String combo;
 	public int totalPrice;
 	
@@ -266,6 +267,11 @@ public class User extends javax.swing.JFrame {
 		boolean input = controller.input(model, usersID, hotelsID, airlinesID, packetsID, totalPrice);
 		if(input){
 			JOptionPane.showMessageDialog(null, "Pesanan anda berhasil");
+			bookingsID = controller.bookingsID(model, totalPrice, bookingsID);
+			Passengers framepassengers = new Passengers(bookingsID, passengers);
+			this.setVisible(false);
+			framepassengers.setVisible(true);
+			dispose();
 		}
 		else{
 			JOptionPane.showMessageDialog(null, "Pesanan anda gagal");

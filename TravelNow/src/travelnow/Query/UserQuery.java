@@ -26,6 +26,14 @@ public class UserQuery {
 	public String cb_airlines = "SELECT * FROM airlines";
 	public String cb_packets = "SELECT * FROM packets";
 	
+	public String bookings = "SELECT * FROM bookings WHERE price = ? AND departuredate = ?";
+	
+	
+	public String passenger = "SELECT * FROM passenger WHERE bookings_id = ?";
+	
+	public String inputPassengers = "INSERT INTO passenger (bookings_id, first_name, last_name, email, phone) VALUES (?,?,?,?,?)";
+	public String count = "SELECT COUNT FROM passenger WHERE bookings_id = ?";
+	
 	public String username = "SELECT * FROM users WHERE id = ?";
 	public String password = "SELECT * FROM users WHERE id = ?";
 }
