@@ -264,14 +264,6 @@ public class UserController extends BaseController{
 		return bookingsID;
 	}
 	
-	public ResultSet passenger(String usersID) { //mengambil data
-		Map<Integer, Object> map = new HashMap<>();
-		
-		map.put(1, usersID);
-		String sql = this.query.passenger;
-		return this.getWithParameter(map, sql);
-	}
-	
 	public Boolean inputPassengers(MainModel model) throws SQLException{
 		
 		Map<Integer, Object> map = new HashMap<>();
@@ -286,18 +278,19 @@ public class UserController extends BaseController{
 		return this.preparedStatement(map, sql);
 	}
 	
-	public String countPassengers(MainModel model, String countPassengers) throws SQLException {
-
+	public int count(String bookingsID) throws SQLException { //mengambil data
+		int count = 0;
 		Map<Integer, Object> map = new HashMap<>();
-		map.put(1, model.getBookingsID());
-
+		
+		map.put(1, bookingsID);
 		String sql = this.query.count;
 		ResultSet rs = this.getWithParameter(map, sql);
 		
-		if (rs.next()) {
-			countPassengers = rs.getString("bookings_id");
+		if(rs.next()){
+			String total = rs.getString("passenger_count");
+			count = Integer.parseInt(total);
 		}
 		
-		return countPassengers;
+		return count;
 	}
 }

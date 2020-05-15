@@ -12,15 +12,18 @@ import java.util.Date;
  * @author user
  */
 public class MainModel {
+	//FOR LOGIN
 	public String username;
 	public String password;
 	
+	//FOR REGISTER AND PASSENGERS FORM
 	public String first;
 	public String last;
 	public String address;
 	public String email;
 	public String phone;
 	
+	//FOR BOOKINGS
 	public String passengers;
 	public String users_id;
 	public String bookingsID;
@@ -31,6 +34,93 @@ public class MainModel {
 	public String hotels;
 	public String packets;
 	public String airlines;
+	
+	//FOR HOTEL FRAME
+	public String hotel_price;
+	public String hotel_name;
+	public String hotel_description;
+
+	//FOR PACKET FRAME
+	public String packet_price;
+	public String packet_name;
+	public String packet_description;
+
+	//FOR AIRLINE FRAME
+	public String airline_price;
+	public String airline_name;
+	public String airline_description;
+
+	public void setHotel_price(String hotel_price) {
+		this.hotel_price = hotel_price;
+	}
+
+	public String getHotel_price() {
+		return hotel_price;
+	}
+
+	public void setHotel_name(String hotel_name) {
+		this.hotel_name = hotel_name;
+	}
+
+	public String getHotel_name() {
+		return hotel_name;
+	}
+
+	public void setHotel_description(String hotel_description) {
+		this.hotel_description = hotel_description;
+	}
+
+	public String getHotel_description() {
+		return hotel_description;
+	}
+
+	public void setAirline_description(String airline_description) {
+		this.airline_description = airline_description;
+	}
+
+	public String getAirline_description() {
+		return airline_description;
+	}
+
+	public void setAirline_name(String airline_name) {
+		this.airline_name = airline_name;
+	}
+
+	public String getAirline_name() {
+		return airline_name;
+	}
+
+	public void setAirline_price(String airline_price) {
+		this.airline_price = airline_price;
+	}
+
+	public String getAirline_price() {
+		return airline_price;
+	}
+
+	public void setPacket_description(String packet_description) {
+		this.packet_description = packet_description;
+	}
+
+	public String getPacket_description() {
+		return packet_description;
+	}
+
+	public void setPacket_name(String packet_name) {
+		this.packet_name = packet_name;
+	}
+
+	public String getPacket_name() {
+		return packet_name;
+	}
+
+	public void setPacket_price(String packet_price) {
+		this.packet_price = packet_price;
+	}
+
+	public String getPacket_price() {
+		return packet_price;
+	}
 
 	public void setBookingsID(String bookingsID) {
 		this.bookingsID = bookingsID;

@@ -24,34 +24,43 @@ public class Passengers extends javax.swing.JFrame {
 	String passengersID;
 	String usersID;
 	String bookingsID;
+	int counts;
+	int count = 0;
 	int total;
+	String passengers;
 	
 	/**
 	 * Creates new form Passengers
 	 * @param bookingsID
-	 * @param totalPrice
-	 * @param usersID
 	 * @param passengers
+	 * @throws java.sql.SQLException
 	 */
 	public Passengers(String bookingsID, String passengers) throws SQLException {
 		initComponents();
 		setLocationRelativeTo(this);
-		String limit = controller.countPassengers(model, passengers);
-		System.out.println(limit);
+		this.count = controller.count(bookingsID);
 		tf_bookings.setText(bookingsID);
 		tf_bookings.setEditable(false);
+		this.passengers = passengers;
 	}
 	
-//	public void limit(String passengers){
-//		int i = 0;
-//		int passenger = Integer.parseInt(passengers);
-//		if(i >= passenger){
-//			btn_submit.setEnabled(false);
-//			JOptionPane.showMessageDialog(null, "Limit");
-//		} else {
-//			JOptionPane.showMessageDialog(null, "Kamu masih harus isi data penumpang");
-//		}
-//	}
+	public void clear(){
+		tf_first.setText("");
+		tf_last.setText("");
+		tf_email.setText("");
+		tf_phone.setText("");
+	}
+	
+	public void limit(String passengers) {
+		int passenger = Integer.parseInt(passengers);
+		this.count = this.count + 1;
+		if (this.count >= passenger) {
+			btn_submit.setEnabled(false);
+			JOptionPane.showMessageDialog(null, "You've reach the limit");
+		} else {
+			JOptionPane.showMessageDialog(null, "You still need to input your passengers data");
+		}
+	}
 
 	private Passengers() {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -64,6 +73,8 @@ public class Passengers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -76,83 +87,92 @@ public class Passengers extends javax.swing.JFrame {
         tf_email = new javax.swing.JTextField();
         tf_phone = new javax.swing.JTextField();
         btn_submit = new javax.swing.JToggleButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jLabel1.setText("Isi Passengers");
+        jPanel1.setLayout(null);
 
-        jLabel2.setText("ID Bookings");
+        jButton1.setText("Log Out");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(340, 360, 77, 32);
 
-        jLabel3.setText("Nama Depan");
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Passengers Details");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(150, 30, 260, 60);
 
-        jLabel4.setText("Nama Belakang");
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("ID Bookings :");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(80, 120, 150, 20);
 
-        jLabel5.setText("E-mail");
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("First Name :");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(80, 180, 150, 20);
 
-        jLabel6.setText("Nomor Telepon");
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Last Name :");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(80, 230, 150, 20);
 
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("E-mail Address :");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(80, 270, 150, 20);
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Phone Number :");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(80, 320, 150, 20);
+        jPanel1.add(tf_bookings);
+        tf_bookings.setBounds(240, 120, 180, 30);
+        jPanel1.add(tf_first);
+        tf_first.setBounds(240, 180, 180, 30);
+        jPanel1.add(tf_last);
+        tf_last.setBounds(240, 230, 180, 30);
+        jPanel1.add(tf_email);
+        tf_email.setBounds(240, 270, 180, 30);
+        jPanel1.add(tf_phone);
+        tf_phone.setBounds(240, 320, 180, 30);
+
+        btn_submit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btn_submit.setText("Submit");
         btn_submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_submitActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_submit);
+        btn_submit.setBounds(240, 360, 80, 30);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/travelnow/Frame/Untitled design (6).png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(0, 0, 500, 400);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_last, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_first, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_bookings, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_submit))))
-                .addContainerGap(73, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tf_bookings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(tf_first, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(tf_last, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(tf_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btn_submit)
-                .addContainerGap(30, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -161,6 +181,8 @@ public class Passengers extends javax.swing.JFrame {
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
         // TODO add your handling code here:
 		try{
+			limit(this.passengers);
+			
 			String first = tf_first.getText();
 			String last = tf_last.getText();
 			String email = tf_email.getText();
@@ -176,15 +198,24 @@ public class Passengers extends javax.swing.JFrame {
 			boolean inputPassengers = controller.inputPassengers(model);
 				
 			if(inputPassengers){
-				JOptionPane.showMessageDialog(null, "Data passengers sudah masuk");
+				JOptionPane.showMessageDialog(null, "Your data have been submitted");
+				clear();
 			}
 			else{
-				JOptionPane.showMessageDialog(null, "Gagal memasukkan data");
+				JOptionPane.showMessageDialog(null, "Failed inputting your passengers data");
 			}
 		} catch (Exception ex){
 			System.out.println(ex.getMessage());
 		}
     }//GEN-LAST:event_btn_submitActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+		Login login = new Login();
+		this.setVisible(false);
+		login.setVisible(true);
+		dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -223,12 +254,15 @@ public class Passengers extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btn_submit;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tf_bookings;
     private javax.swing.JTextField tf_email;
     private javax.swing.JTextField tf_first;

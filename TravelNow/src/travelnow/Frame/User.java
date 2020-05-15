@@ -57,8 +57,7 @@ public class User extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tf_usersid = new javax.swing.JTextField();
         btn_logout = new javax.swing.JButton();
@@ -74,153 +73,157 @@ public class User extends javax.swing.JFrame {
         tf_price = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         btn_submit = new javax.swing.JButton();
-        dp_transaction = new org.jdesktop.swingx.JXDatePicker();
         btn_calculate = new javax.swing.JButton();
         btn_bookings = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         tf_passengers = new javax.swing.JTextField();
+        dp_transaction = new org.jdesktop.swingx.JXDatePicker();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jLabel1.setText("Selamat datang di TravelNow");
+        jPanel1.setLayout(null);
 
-        jLabel2.setText("Silahkan membuat pesanan");
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Costumer ID :");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(10, 10, 110, 20);
+        jPanel1.add(tf_usersid);
+        tf_usersid.setBounds(120, 10, 90, 30);
 
-        jLabel3.setText("Pemesan :");
-
+        btn_logout.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btn_logout.setText("Log Out");
         btn_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_logoutActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_logout);
+        btn_logout.setBounds(710, 430, 80, 30);
 
-        jLabel4.setText("Pilihan Hotel :");
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Hotels :");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(40, 170, 110, 20);
 
-        jLabel5.setText("Pilihan Paket :");
+        jPanel1.add(cb_hotel);
+        cb_hotel.setBounds(150, 170, 200, 26);
 
-        jLabel6.setText("Pilihan Maskapai :");
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Packets :");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(40, 220, 110, 20);
 
-        jLabel7.setText("Estimasi perjalanan :");
+        jPanel1.add(cb_packet);
+        cb_packet.setBounds(150, 220, 202, 26);
 
-        jLabel8.setText("Total :");
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Airlines :");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(40, 270, 110, 20);
 
-        jLabel9.setText("Tanggal Keberangkatan :");
+        jPanel1.add(cb_airlines);
+        cb_airlines.setBounds(150, 270, 202, 26);
 
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Estimated Trip :");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(400, 150, 140, 20);
+        jPanel1.add(tf_estimation);
+        tf_estimation.setBounds(540, 150, 180, 30);
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Total Price :");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(400, 260, 140, 20);
+        jPanel1.add(tf_price);
+        tf_price.setBounds(540, 260, 180, 30);
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Departure Date :");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(400, 300, 140, 20);
+
+        btn_submit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btn_submit.setText("Submit");
         btn_submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_submitActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_submit);
+        btn_submit.setBounds(340, 330, 70, 30);
 
+        btn_calculate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btn_calculate.setText("Calculate");
         btn_calculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_calculateActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_calculate);
+        btn_calculate.setBounds(630, 220, 90, 33);
 
+        btn_bookings.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btn_bookings.setText("Check your Bookings");
         btn_bookings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_bookingsActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_bookings);
+        btn_bookings.setBounds(290, 420, 170, 30);
 
-        jLabel10.setText("Total penumpang :");
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Passengers :");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(400, 190, 140, 20);
+        jPanel1.add(tf_passengers);
+        tf_passengers.setBounds(540, 190, 180, 30);
+        jPanel1.add(dp_transaction);
+        dp_transaction.setBounds(540, 300, 180, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/travelnow/Frame/welcometn.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 10, 800, 70);
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel13.setText("Pax");
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(730, 180, 50, 17);
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel12.setText("Days");
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(730, 150, 40, 20);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/travelnow/Frame/Untitled design (4).png"))); // NOI18N
+        jLabel11.setText("Days");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(0, 0, 800, 470);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(157, 157, 157))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dp_transaction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tf_passengers, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_usersid, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cb_hotel, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cb_packet, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cb_airlines, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tf_estimation, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_price, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btn_submit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_bookings)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_calculate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(tf_usersid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(cb_hotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(cb_packet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cb_airlines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(tf_estimation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(tf_passengers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(tf_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_calculate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(dp_transaction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btn_submit)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_logout)
-                    .addComponent(btn_bookings))
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -266,7 +269,7 @@ public class User extends javax.swing.JFrame {
 		
 		boolean input = controller.input(model, usersID, hotelsID, airlinesID, packetsID, totalPrice);
 		if(input){
-			JOptionPane.showMessageDialog(null, "Pesanan anda berhasil");
+			JOptionPane.showMessageDialog(null, "Your bookings Success");
 			bookingsID = controller.bookingsID(model, totalPrice, bookingsID);
 			Passengers framepassengers = new Passengers(bookingsID, passengers);
 			this.setVisible(false);
@@ -274,7 +277,7 @@ public class User extends javax.swing.JFrame {
 			dispose();
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Pesanan anda gagal");
+			JOptionPane.showMessageDialog(null, "Your bookings Failed");
 		}
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
@@ -376,7 +379,9 @@ public class User extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker dp_transaction;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -384,6 +389,7 @@ public class User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tf_estimation;
     private javax.swing.JTextField tf_passengers;
     private javax.swing.JTextField tf_price;

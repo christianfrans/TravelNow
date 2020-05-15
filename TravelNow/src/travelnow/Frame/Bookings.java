@@ -12,6 +12,7 @@ import static java.time.LocalDateTime.now;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableColumnModel;
 import net.proteanit.sql.DbUtils;
 import travelnow.Controller.UserController;
 import travelnow.Helper.Helper;
@@ -39,6 +40,18 @@ public class Bookings extends javax.swing.JFrame {
     
     public void loadTable(ResultSet rs){
         tb_bookings.setModel(DbUtils.resultSetToTableModel(rs));
+		
+		TableColumnModel tcm = tb_bookings.getColumnModel();
+		tcm.getColumn(0).setHeaderValue("Nomor Pesanan");
+		tcm.getColumn(1).setHeaderValue("Pengguna");
+		tcm.getColumn(2).setHeaderValue("Hotel");
+		tcm.getColumn(3).setHeaderValue("Paket");
+		tcm.getColumn(4).setHeaderValue("Paket Negara");
+		tcm.getColumn(5).setHeaderValue("Estimasi perjalanan");
+		tcm.getColumn(6).setHeaderValue("Jumlah orang");
+		tcm.getColumn(7).setHeaderValue("Total Harga");
+		tcm.getColumn(8).setHeaderValue("Tanggal Keberangkatan");
+		tcm.getColumn(9).setHeaderValue("Tanggal Dihapus");
     }
 	
 	/**
@@ -67,16 +80,17 @@ public class Bookings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_bookings = new javax.swing.JTable();
-        btn_cancel = new javax.swing.JButton();
         btn_back = new javax.swing.JToggleButton();
+        btn_cancel = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jLabel1.setText("Your Bookings");
+        jPanel1.setLayout(null);
 
         tb_bookings.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,53 +110,44 @@ public class Bookings extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tb_bookings);
 
-        btn_cancel.setText("Cancel Bookings");
-        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(60, 90, 483, 240);
 
-        btn_back.setText("Back");
+        btn_back.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btn_back.setText("< Back");
         btn_back.setToolTipText("");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_backActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_back);
+        btn_back.setBounds(520, 360, 70, 33);
+
+        btn_cancel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btn_cancel.setText("Cancel Bookings");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_cancel);
+        btn_cancel.setBounds(240, 340, 124, 33);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/travelnow/Frame/Untitled design (7).png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(0, 0, 600, 400);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_cancel)
-                        .addGap(183, 183, 183)
-                        .addComponent(btn_back)
-                        .addContainerGap())))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_cancel)
-                    .addComponent(btn_back))
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -229,7 +234,8 @@ public class Bookings extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btn_back;
     private javax.swing.JButton btn_cancel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tb_bookings;
     // End of variables declaration//GEN-END:variables
